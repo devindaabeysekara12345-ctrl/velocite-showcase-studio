@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as GarageRouteImport } from './routes/garage'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GarageCarIdRouteImport } from './routes/garage.$carId'
 
 const GarageRoute = GarageRouteImport.update({
   id: '/garage',
   path: '/garage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,30 +37,34 @@ const GarageCarIdRoute = GarageCarIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/garage': typeof GarageRouteWithChildren
   '/garage/$carId': typeof GarageCarIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/garage': typeof GarageRouteWithChildren
   '/garage/$carId': typeof GarageCarIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/garage': typeof GarageRouteWithChildren
   '/garage/$carId': typeof GarageCarIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/garage' | '/garage/$carId'
+  fullPaths: '/' | '/about' | '/garage' | '/garage/$carId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/garage' | '/garage/$carId'
-  id: '__root__' | '/' | '/garage' | '/garage/$carId'
+  to: '/' | '/about' | '/garage' | '/garage/$carId'
+  id: '__root__' | '/' | '/about' | '/garage' | '/garage/$carId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   GarageRoute: typeof GarageRouteWithChildren
 }
 
@@ -65,6 +75,13 @@ declare module '@tanstack/react-router' {
       path: '/garage'
       fullPath: '/garage'
       preLoaderRoute: typeof GarageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -97,6 +114,7 @@ const GarageRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   GarageRoute: GarageRouteWithChildren,
 }
 export const routeTree = rootRouteImport
