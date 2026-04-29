@@ -291,6 +291,8 @@ function CarDetailPage() {
           </Link>
         </div>
       </footer>
+
+      <ReservationModal car={car} open={reserveOpen} onClose={() => setReserveOpen(false)} />
     </main>
   );
 }
