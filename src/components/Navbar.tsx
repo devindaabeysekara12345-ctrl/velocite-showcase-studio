@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 
 const links = [
-  { label: "Garage", to: "/" },
-  { label: "Features", to: "/" },
-  { label: "About", to: "/" },
-  { label: "Shop", to: "/" },
+  { label: "Garage", to: "/garage" as const },
+  { label: "Features", to: "/" as const },
+  { label: "About", to: "/" as const },
+  { label: "Shop", to: "/" as const },
 ];
 
 export function Navbar() {
@@ -25,6 +25,8 @@ export function Navbar() {
                 <Link
                   to={l.to}
                   className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-full hover:bg-white/5"
+                  activeProps={{ className: "px-4 py-2 text-sm text-neon rounded-full bg-white/5" }}
+                  activeOptions={{ exact: true }}
                 >
                   {l.label}
                 </Link>
