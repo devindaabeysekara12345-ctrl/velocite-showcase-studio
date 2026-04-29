@@ -82,12 +82,11 @@ export function CarCard({ car, index }: { car: Car; index: number }) {
               {car.price}
             </div>
           </div>
-          <button
-            disabled={car.status === "Sold Out"}
-            className="font-mono text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-full border border-white/15 hover:border-neon hover:text-neon hover:bg-neon/5 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:border-white/15 disabled:hover:text-foreground disabled:hover:bg-transparent"
+          <span
+            className="relative z-30 pointer-events-none font-mono text-[10px] uppercase tracking-[0.2em] px-4 py-2.5 rounded-full border border-white/15 group-hover:border-neon group-hover:text-neon group-hover:bg-neon/5 transition-colors"
           >
-            {car.status === "Sold Out" ? "Waitlist" : "Configure →"}
-          </button>
+            {car.status === "Sold Out" ? "Waitlist →" : "View Model →"}
+          </span>
         </div>
       </div>
     </article>
