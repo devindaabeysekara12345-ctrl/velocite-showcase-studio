@@ -4,7 +4,7 @@ const links = [
   { label: "Garage", to: "/garage" as const },
   { label: "Features", to: "/" as const },
   { label: "About", to: "/about" as const },
-  { label: "Shop", to: "/" as const },
+  { label: "Contact", to: "/contact" as const },
 ];
 
 export function Navbar() {
