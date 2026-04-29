@@ -19,38 +19,38 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background/60" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-40 pb-20 min-h-screen flex flex-col">
+      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-6 pt-32 sm:pt-40 pb-16 sm:pb-20 min-h-screen flex flex-col">
         {/* Top meta */}
-        <div className="flex items-center gap-3 mb-8 animate-fade-in">
-          <div className="h-px w-12 bg-neon" />
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-neon">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8 animate-fade-in">
+          <div className="h-px w-10 sm:w-12 bg-neon" />
+          <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.3em] text-neon">
             MMXXVI / Series 01
           </span>
         </div>
 
-        <div className="flex-1 grid lg:grid-cols-12 gap-8 items-center">
+        <div className="flex-1 grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left: title */}
-          <div className="lg:col-span-8 space-y-6">
+          <div className="lg:col-span-8 space-y-5 sm:space-y-6">
             <h1 className="font-display font-bold leading-[0.85] tracking-tighter">
-              <span className="block text-sm font-mono uppercase tracking-[0.4em] text-muted-foreground mb-6">
+              <span className="block text-xs sm:text-sm font-mono uppercase tracking-[0.4em] text-muted-foreground mb-4 sm:mb-6">
                 The Aether
               </span>
-              <span className="block text-[clamp(4rem,14vw,12rem)] text-glow">
+              <span className="block text-[clamp(3.5rem,14vw,12rem)] text-glow">
                 GT‑X
               </span>
-              <span className="block text-[clamp(2rem,5vw,4rem)] text-muted-foreground font-light italic">
+              <span className="block text-[clamp(1.5rem,5vw,4rem)] text-muted-foreground font-light italic">
                 Cinq‑cent‑onze
               </span>
             </h1>
 
-            <p className="max-w-md text-base text-muted-foreground leading-relaxed pt-4">
+            <p className="max-w-md text-sm sm:text-base text-muted-foreground leading-relaxed pt-2 sm:pt-4">
               A hand‑forged carbon monocoque wrapped around a tri‑motor
               powertrain. 511 units. Zero compromises. Built where physics ends
               and obsession begins.
             </p>
 
-            <div className="flex items-center gap-4 pt-4">
-              <button className="group bg-neon text-neon-foreground px-7 py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:scale-105 transition-transform neon-glow">
+            <div className="flex flex-wrap items-center gap-4 pt-2 sm:pt-4">
+              <button className="group bg-neon text-neon-foreground px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:scale-105 transition-transform neon-glow">
                 Reserve Yours
                 <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
               </button>
@@ -61,7 +61,7 @@ export function Hero() {
           </div>
 
           {/* Right: floating spec cards */}
-          <div className="lg:col-span-4 flex flex-col items-end gap-5">
+          <div className="lg:col-span-4 grid grid-cols-3 lg:flex lg:flex-col lg:items-end gap-3 sm:gap-5">
             <SpecCard label="Power" value="1,200" unit="HP" delay="0s" />
             <SpecCard label="Top Speed" value="248" unit="MPH" delay="1s" />
             <SpecCard label="Range" value="412" unit="MI" delay="2s" />
@@ -69,8 +69,9 @@ export function Hero() {
         </div>
 
         {/* Bottom telemetry strip */}
-        <div className="mt-12 flex items-center justify-between text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-white/5 pt-6">
-          <span>↓ Scroll to explore</span>
+        <div className="mt-10 sm:mt-12 flex items-center justify-between text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-muted-foreground border-t border-white/5 pt-5 sm:pt-6 gap-3">
+          <span className="hidden sm:inline">↓ Scroll to explore</span>
+          <span className="sm:hidden">↓ Scroll</span>
           <div className="hidden md:flex items-center gap-6">
             <span>0–60 <span className="text-neon">1.9s</span></span>
             <span>Torque <span className="text-neon">1,050 Nm</span></span>

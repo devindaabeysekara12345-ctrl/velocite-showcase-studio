@@ -1,4 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { PageReveal } from "@/components/PageReveal";
 
 import appCss from "../styles.css?url";
 
@@ -68,5 +70,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <LoadingScreen />
+      <PageReveal>
+        <Outlet />
+      </PageReveal>
+    </>
+  );
 }
