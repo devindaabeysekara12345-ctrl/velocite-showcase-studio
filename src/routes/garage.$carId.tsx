@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
+import { ReservationModal } from "@/components/ReservationModal";
 import { cars } from "@/data/cars";
 import { carDetails } from "@/data/carDetails";
 import heroCar from "@/assets/hero-car.jpg";
@@ -55,6 +56,7 @@ function CarDetailPage() {
   const { car, detail } = Route.useLoaderData();
   const gallery = [car.image, heroCar, car.image];
   const [activeIdx, setActiveIdx] = useState(0);
+  const [reserveOpen, setReserveOpen] = useState(false);
 
   // Find prev/next for navigation
   const idx = cars.findIndex((c) => c.id === car.id);
@@ -184,12 +186,15 @@ function CarDetailPage() {
               </div>
 
               <button
-                disabled={car.status === "Sold Out"}
-                className="w-full bg-neon text-neon-foreground py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform neon-glow disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+                onClick={() => setReserveOpen(true)}
+                className="w-full bg-neon text-neon-foreground py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform neon-glow"
               >
-                {car.status === "Sold Out" ? "Join Waitlist" : "Reserve Yours →"}
+                {car.status === "Sold Out" ? "Join Waitlist →" : "Reserve Yours →"}
               </button>
-              <button className="w-full border border-white/15 hover:border-neon hover:text-neon py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors">
+              <button
+                onClick={() => setReserveOpen(true)}
+                className="w-full border border-white/15 hover:border-neon hover:text-neon py-3.5 rounded-full font-mono text-xs uppercase tracking-[0.2em] transition-colors"
+              >
                 Configure
               </button>
             </div>
@@ -286,6 +291,8 @@ function CarDetailPage() {
           </Link>
         </div>
       </footer>
+
+      <ReservationModal car={car} open={reserveOpen} onClose={() => setReserveOpen(false)} />
     </main>
   );
 }
